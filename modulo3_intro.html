@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 3 — Próximamente | LMS CNDPR</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script type="module" src="scripts/auth-guard.js"></script>
+</head>
+<body>
+    <!-- NIVEL 1 — Banner demostrativo persistente (encima del App Shell) -->
+    <div role="alert" style="background: var(--color-warning-soft); color: var(--color-warning); padding: var(--space-2) var(--space-4); font-size: var(--text-xs); font-weight: var(--weight-medium); text-align: center; border-bottom: 1px solid var(--color-border);">
+        ⚠️ CONTENIDO DEMOSTRATIVO — Material de prototipo. No constituye educación continuada oficial del CNDPR.
+    </div>
+
+    <div class="app-shell">
+        <aside class="sidebar" id="lms-sidebar">
+            <a href="dashboard.html" class="sidebar-brand">
+                <img src="CNDPR-LOGO-transparent.png" alt="CNDPR" class="sidebar-logo">
+            </a>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link">
+                    <span class="icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                <div class="meta-label p-4 mb-0" style="padding: var(--space-4) var(--space-4) 0; font-size: var(--text-xs); color: var(--color-text-faint);">Módulos</div>
+                <a href="modulo1_intro.html" class="nav-link">
+                    <span class="icon">📘</span>
+                    <span>Módulo 1</span>
+                </a>
+                <a href="modulo2_intro.html" class="nav-link">
+                    <span class="icon">📗</span>
+                    <span>Módulo 2</span>
+                </a>
+                <a href="modulo3_intro.html" class="nav-link is-active" aria-current="page">
+                    <span class="icon">📙</span>
+                    <span>Módulo 3</span>
+                </a>
+                <hr class="mt-4 mb-4">
+                <a href="perfil.html" class="nav-link">
+                    <span class="icon">👤</span>
+                    <span>Mi Perfil</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="avatar avatar-sm">A</div>
+                    <div class="user-info">
+                        <div class="text-sm weight-bold" style="font-weight: var(--weight-bold);">Dra. Ana M. Rodríguez</div>
+                        <div class="text-xs text-muted">Lic. 1234</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <button class="mobile-menu-button btn btn-ghost btn-icon" aria-label="Abrir menú de navegación" aria-controls="lms-sidebar" aria-expanded="false">
+                    <span style="font-size: 24px;">☰</span>
+                </button>
+                <div class="topbar-title">Módulo 3 — Próximamente</div>
+                <div class="topbar-actions">
+                    <div class="cluster">
+                        <span class="status-pill">Próximamente</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-wrapper">
+                <header class="module-hero mb-8">
+                    <div class="module-cover">
+                        <span class="eyebrow">Manejo Nutricional de la Diabetes Tipo 2: Actualización Clínica</span>
+                        <h1 class="page-title">Módulo 3: Casos Clínicos y Práctica Profesional en DM2</h1>
+                        <p class="lead">Integración de competencias clínicas a través del análisis de casos reales, práctica reflexiva y evaluación de resultados nutricionales.</p>
+                    </div>
+                </header>
+
+                <section class="section">
+                    <div class="next-step-card">
+                        <div style="text-align: center; padding: var(--space-8) var(--space-4);">
+                            <p style="font-size: var(--text-3xl); margin-bottom: var(--space-4);">🚧</p>
+                            <h2 class="section-title">Módulo en desarrollo</h2>
+                            <p class="text-muted" style="margin-top: var(--space-3); max-width: 32rem; margin-left: auto; margin-right: auto;">Este módulo estará disponible próximamente. Al completar los Módulos 1 y 2 recibirás una notificación cuando el contenido esté listo.</p>
+                            <a href="dashboard.html" class="btn btn-outline" style="margin-top: var(--space-6);">← Volver al Dashboard</a>
+                        </div>
+                    </div>
+                </section>
+
+                <p style="text-align: center; color: var(--color-text-faint); font-size: var(--text-xs); margin-top: var(--space-12); padding-top: var(--space-8); border-top: 1px solid var(--color-divider);">
+                    Plataforma en fase de prototipo. Contenido demostrativo no oficial.
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="scripts/firebase-config.js"></script>
+    <script src="scripts/ui-controller.js"></script>
+</body>
+</html>
