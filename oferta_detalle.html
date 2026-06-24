@@ -115,7 +115,7 @@
             <a href="dashboard.html" style="font-size: var(--text-sm); color: var(--color-text-muted); text-decoration: none;">Mi Dashboard</a>
         </nav>
         <div id="header-auth" style="margin-left: auto;">
-            <a href="index.html" class="btn btn-outline btn-sm">Iniciar sesión</a>
+            <a href="login.html" class="btn btn-outline btn-sm">Iniciar sesión</a>
         </div>
     </header>
 
@@ -308,7 +308,7 @@
             <div style="display: flex; gap: var(--space-5);">
                 <a href="catalogo.html" style="font-size: var(--text-sm); color: rgba(255,255,255,0.7); text-decoration: none;">Catálogo</a>
                 <a href="dashboard.html" style="font-size: var(--text-sm); color: rgba(255,255,255,0.7); text-decoration: none;">Mi Dashboard</a>
-                <a href="index.html" style="font-size: var(--text-sm); color: rgba(255,255,255,0.7); text-decoration: none;">Iniciar sesión</a>
+                <a href="login.html" style="font-size: var(--text-sm); color: rgba(255,255,255,0.7); text-decoration: none;">Iniciar sesión</a>
             </div>
         </div>
     </footer>
@@ -347,7 +347,7 @@
 
         if (!isLogged) {
             cta.innerHTML = `
-                <a href="index.html" class="cta-sidebar">Iniciar sesión para inscribirme</a>
+                <a href="login.html" class="cta-sidebar">Iniciar sesión para inscribirme</a>
                 <p style="font-size:var(--text-xs);color:var(--color-text-muted);text-align:center;margin-top:var(--space-2);">Necesitas una cuenta para acceder a esta oferta.</p>`;
         } else if (enrolled) {
             const OFFER_TARGETS = { 'dm2-actualizacion-clinica': 'modulo1_intro.html', 'conteo-carbohidratos': 'taller_conteo_intro.html' };

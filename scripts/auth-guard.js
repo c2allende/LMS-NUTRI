@@ -10,7 +10,7 @@ onAuthStateChanged(auth, async (user) => {
     if (!user) {
         setTimeout(() => {
             if (!auth.currentUser) {
-                window.location.href = "index.html";
+                window.location.href = "login.html";
             }
         }, 1000);
         return;
@@ -21,19 +21,19 @@ onAuthStateChanged(auth, async (user) => {
 
         if (!profile) {
             await signOut(auth);
-            window.location.href = "index.html";
+            window.location.href = "login.html";
             return;
         }
 
         if (profile.status === "inactive" || profile.status === "archived" || profile.accessRevoked === true) {
             await signOut(auth);
             sessionStorage.setItem("auth_redirect_message", "Tu acceso no está activo.");
-            window.location.href = "index.html";
+            window.location.href = "login.html";
             return;
         }
 
     } catch (error) {
         console.error("Error en verificación:", error);
-        window.location.href = "index.html";
+        window.location.href = "login.html";
     }
 });
