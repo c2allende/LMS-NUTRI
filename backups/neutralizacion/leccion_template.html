@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección | LMS CNDPR</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script type="module" src="scripts/auth-guard.js"></script>
+    <script type="module" src="scripts/progress-tracker.js"></script>
+</head>
+<body data-page-id="leccion_1_1" data-module-id="modulo1">
+    <div class="app-shell">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="lms-sidebar">
+            <a href="dashboard.html" class="sidebar-brand">
+                <img src="CNDPR-LOGO-transparent.png" alt="CNDPR" class="sidebar-logo">
+            </a>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link">
+                    <span class="icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                
+                <div class="meta-label p-4 mb-0" style="padding: var(--space-4) var(--space-4) 0; font-size: var(--text-xs); color: var(--color-text-faint);">Módulo Actual</div>
+                <a href="modulo1_intro.html" class="nav-link is-active">
+                    <span class="icon">📘</span>
+                    <span>Módulo 1</span>
+                </a>
+                
+                <div class="meta-label p-4 mb-0" style="padding: var(--space-4) var(--space-4) 0; font-size: var(--text-xs); color: var(--color-text-faint);">Contenido</div>
+                <a href="#" class="nav-link is-active" aria-current="page">
+                    <span class="icon">📄</span>
+                    <span>Lección Actual</span>
+                </a>
+                
+                <hr class="mt-4 mb-4">
+                <a href="perfil.html" class="nav-link">
+                    <span class="icon">👤</span>
+                    <span>Mi Perfil</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="avatar avatar-sm">U</div>
+                    <div class="user-info">
+                        <div class="text-sm weight-bold" style="font-weight: var(--weight-bold);">Estudiante</div>
+                        <div class="text-xs text-muted">Online</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <button class="mobile-menu-button btn btn-ghost btn-icon" aria-label="Abrir menú de navegación" aria-controls="lms-sidebar" aria-expanded="false">
+                    <span style="font-size: 24px;">☰</span>
+                </button>
+                <div class="topbar-title">Lección [X.X]: [TÍTULO DE LA LECCIÓN]</div>
+                <div class="topbar-actions">
+                    <div class="cluster">
+                        <span class="badge badge-info">Lectura</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-wrapper">
+                <div class="lesson-layout">
+                    <div class="lesson-content">
+                        <!-- Lesson Header -->
+                        <header class="lesson-header mb-8">
+                            <span class="eyebrow">Módulo 1</span>
+                            <h1 class="page-title">[TÍTULO DE LA LECCIÓN]</h1>
+                        </header>
+
+                        <!-- Content Section -->
+                        <article class="reading-content stack" style="--stack-gap: var(--space-6);">
+                            <div class="text-section">
+                                <p>[CONTENIDO DE LA LECCIÓN - TEXTO, EXPLICACIONES, ETC.]</p>
+                            </div>
+
+                            <div class="summary-box">
+                                <h3 class="weight-bold mb-2" style="font-weight: var(--weight-bold); margin-bottom: var(--space-2);">Punto Clave</h3>
+                                <p>[RECOMENDACIÓN O NOTA IMPORTANTE]</p>
+                            </div>
+
+                            <div class="video-wrapper">
+                                <div class="video-frame-inner">
+                                    <iframe src="https://www.youtube.com/embed/placeholder" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Lesson Navigation -->
+                        <footer class="lesson-nav mt-12 pt-8" style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 1px solid var(--color-border-default);">
+                            <div class="split">
+                                <a href="modulo1_intro.html" class="btn btn-outline">
+                                    <span>Anterior</span>
+                                </a>
+                                <a href="leccion1_2.html" class="btn btn-primary">
+                                    <span>Siguiente Lección</span>
+                                </a>
+                            </div>
+                        </footer>
+                    </div>
+
+                    <!-- Optional Lesson Sidebar -->
+                    <aside class="lesson-sidebar">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title text-sm">Recursos de la clase</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-xs text-muted">No hay recursos adicionales para esta lección.</p>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="scripts/firebase-config.js"></script>
+    <script src="scripts/ui-controller.js"></script>
+</body>
+</html>

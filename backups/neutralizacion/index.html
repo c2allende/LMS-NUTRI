@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accede a tu cuenta del LMS del CNDPR. Educación continua para Nutricionistas y Dietistas de Puerto Rico. Proveedor EC Núm. 00000.">
+    <title>Iniciar Sesión | LMS CNDPR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .login-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: var(--space-4); background: var(--color-bg); }
+        .login-card-container { width: 100%; max-width: 1000px; display: grid; grid-template-columns: 1fr 1fr; background: var(--color-surface); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); }
+        .login-sidebar { padding: var(--space-8); background: var(--color-primary); color: var(--color-text-inverse); display: flex; flex-direction: column; justify-content: center; }
+        .login-content { padding: var(--space-8); display: flex; flex-direction: column; justify-content: center; }
+        @media (max-width: 768px) { .login-card-container { grid-template-columns: 1fr; } .login-sidebar { display: none; } }
+    </style>
+</head>
+<body>
+    <main class="login-page">
+        <section class="login-card-container">
+            <aside class="login-sidebar">
+                <img src="CNDPR-LOGO-transparent.png" alt="CNDPR" style="height: 3rem; margin-bottom: var(--space-6);">
+                <h1 style="color: white; margin: 0 0 var(--space-4);">Bienvenido al LMS CNDPR</h1>
+                <p style="color: rgba(255,255,255,0.8); line-height: var(--leading-relaxed);">Plataforma de educación continuada para Nutricionistas-Dietistas de Puerto Rico.</p>
+                <p style="color: rgba(255,255,255,0.55); font-size: var(--text-xs); margin-top: var(--space-8);">Proveedor de EC Núm. 00062 · Ley 82 de 1972</p>
+            </aside>
+            <div class="login-content">
+                <h2 style="margin: 0 0 var(--space-2);">Iniciar Sesión</h2>
+                <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-6);">Ingresa tus credenciales o usa el acceso de demostración.</p>
+
+                <form id="loginForm" novalidate>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="emailInput" class="input" placeholder="correo@ejemplo.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" id="passwordInput" class="input" placeholder="••••••••">
+                    </div>
+                    <div id="login-error" style="display:none; color: var(--color-error); font-size: var(--text-xs); margin-bottom: var(--space-3);"></div>
+                    <button type="submit" class="btn btn-primary w-full">Entrar</button>
+                </form>
+
+                <div style="display: flex; align-items: center; gap: var(--space-3); margin: var(--space-5) 0;">
+                    <hr style="flex: 1; border: none; border-top: 1px solid var(--color-divider);">
+                    <span style="font-size: var(--text-xs); color: var(--color-text-faint);">o</span>
+                    <hr style="flex: 1; border: none; border-top: 1px solid var(--color-divider);">
+                </div>
+
+                <button type="button" id="demoBtn" class="btn btn-outline w-full" style="border-color: var(--color-secondary); color: var(--color-secondary);">
+                    ⚡ Entrar como Demo
+                </button>
+                <p style="font-size: var(--text-xs); color: var(--color-text-faint); text-align: center; margin-top: var(--space-2);">Acceso inmediato como Dra. Ana M. Rodríguez · Lic. 1234</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+    function loginDemo() {
+        sessionStorage.setItem('student_name', 'Dra. Ana M. Rodríguez Vega');
+        sessionStorage.setItem('student_license', '1234');
+        sessionStorage.setItem('student_registration', '100001');
+        if (!sessionStorage.getItem('lms_enrollments')) {
+            sessionStorage.setItem('lms_enrollments', JSON.stringify(['dm2-actualizacion-clinica']));
+        }
+        window.location.href = 'dashboard.html';
+    }
+
+    // Botón "Entrar como Demo"
+    document.getElementById('demoBtn').addEventListener('click', loginDemo);
+
+    // Formulario: acepta cualquier email/contraseña en modo demo
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email    = document.getElementById('emailInput').value.trim();
+        const password = document.getElementById('passwordInput').value;
+        const errorDiv = document.getElementById('login-error');
+
+        if (!email || !password) {
+            errorDiv.textContent = 'Por favor ingresa tu email y contraseña, o usa el acceso Demo.';
+            errorDiv.style.display = 'block';
+            return;
+        }
+
+        // En modo prototipo: cualquier credencial válida entra como demo
+        errorDiv.style.display = 'none';
+        loginDemo();
+    });
+    </script>
+</body>
+</html>

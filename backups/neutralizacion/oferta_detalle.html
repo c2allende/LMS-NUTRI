@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta | LMS CNDPR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        :root {
+            --teal:        #1D9E75;
+            --teal-light:  #E1F5EE;
+            --teal-dark:   #085041;
+            --amber:       #EF9F27;
+            --amber-light: #FAEEDA;
+            --amber-dark:  #633806;
+            --card-bg:     #EEECEA;
+            --text-main:   #1a1a1a;
+            --text-muted:  #4b5563;
+            --text-small:  #888780;
+            --border:      rgba(0,0,0,0.08);
+        }
+
+        /* ── HERO ── */
+        .offer-hero {
+            background: #085041;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .offer-type-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,0.15); color: white;
+            font-size: 12px; font-weight: 500;
+            padding: 4px 12px; border-radius: 99px;
+            margin-bottom: 1rem;
+        }
+        .offer-hero h1 {
+            color: white;
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+        }
+        .hero-lead {
+            color: rgba(255,255,255,0.8);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .meta-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .meta-pill {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: rgba(255,255,255,0.15); color: white;
+            font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 99px;
+        }
+        .meta-pill svg { width: 13px; height: 13px; opacity: 0.8; }
+
+        /* ── LAYOUT ── */
+        .offer-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 24px;
+            align-items: start;
+        }
+        @media (max-width: 720px) { .offer-layout { grid-template-columns: 1fr; } }
+
+        /* ── ESTRUCTURA NUMERADA (módulos) ── */
+        .reading-structure { display: flex; flex-direction: column; gap: 8px; padding: 1rem 1.25rem; }
+        .structure-item { display: flex; align-items: center; gap: 12px; background: var(--card-bg); border-radius: 12px; padding: 12px 14px; }
+        .structure-num { width: 28px; height: 28px; border-radius: 50%; background: var(--teal); color: white; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .structure-info { flex: 1; }
+        .structure-info strong { display: block; font-size: 13px; font-weight: 500; color: var(--text-main); margin-bottom: 2px; }
+        .structure-info span { font-size: 12px; color: var(--text-small); }
+        .structure-time { font-size: 11px; color: var(--text-small); white-space: nowrap; }
+
+        /* ── SIDEBAR INFO CARD ── */
+        .info-card { background: var(--card-bg); border-radius: 16px; padding: 1.4rem; position: sticky; top: 80px; }
+        .info-card-title { font-size: 13px; font-weight: 600; color: var(--text-small); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
+        .info-rows { display: flex; flex-direction: column; gap: 12px; margin-bottom: 1.25rem; }
+        .info-row { display: flex; align-items: flex-start; gap: 10px; }
+        .info-row-icon { width: 32px; height: 32px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .info-row-icon svg { width: 15px; height: 15px; color: var(--teal); }
+        .info-row-text strong { display: block; font-size: 13px; font-weight: 500; color: var(--text-main); line-height: 1.3; }
+        .info-row-text span { font-size: 12px; color: var(--text-small); }
+        .divider { height: 1px; background: var(--border); margin: 1rem 0; }
+        .instruc-box { background: var(--amber-light); border-radius: 10px; padding: 12px 14px; font-size: 12px; color: var(--amber-dark); line-height: 1.6; }
+        .instruc-box strong { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+        .cta-sidebar { display: block; text-align: center; background: var(--teal); color: white; font-size: 14px; font-weight: 500; font-family: inherit; padding: 11px; border-radius: 10px; border: none; cursor: pointer; text-decoration: none; margin-top: 1rem; transition: background 0.15s; }
+        .cta-sidebar:hover { background: var(--teal-dark); }
+        .instructor-row { display: flex; align-items: center; gap: 10px; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+        .instructor-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--teal); color: white; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .instructor-info strong { display: block; font-size: 13px; font-weight: 500; color: var(--text-main); }
+        .instructor-bio-short { font-size: 11px; color: var(--text-small); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    </style>
+</head>
+<body>
+
+    <!-- NIVEL 1 — Banner demostrativo -->
+    <div role="alert" style="background: var(--color-warning-soft); color: var(--color-warning); padding: var(--space-2) var(--space-4); font-size: var(--text-xs); font-weight: var(--weight-medium); text-align: center; border-bottom: 1px solid var(--color-border);">
+        ⚠️ CONTENIDO DEMOSTRATIVO — Material de prototipo. No constituye educación continuada oficial del CNDPR.
+    </div>
+
+    <!-- ── Header público ──────────────────────────────────────────────────── -->
+    <header style="background: var(--color-surface); border-bottom: 1px solid var(--color-border); padding: var(--space-3) var(--space-8); display: flex; align-items: center; gap: var(--space-6); position: sticky; top: 0; z-index: var(--z-sticky); box-shadow: var(--shadow-xs);">
+        <a href="catalogo.html" style="display: flex; align-items: center; gap: var(--space-3); text-decoration: none; flex-shrink: 0;">
+            <img src="CNDPR-LOGO-transparent.png" alt="CNDPR" style="height: 2.25rem;">
+            <span style="font-weight: var(--weight-bold); font-size: var(--text-sm); color: var(--color-text);">LMS CNDPR</span>
+        </a>
+        <nav style="display: flex; gap: var(--space-5); margin-left: var(--space-4);">
+            <a href="catalogo.html" style="font-size: var(--text-sm); color: var(--color-primary); font-weight: var(--weight-medium); text-decoration: none;">Catálogo</a>
+            <a href="dashboard.html" style="font-size: var(--text-sm); color: var(--color-text-muted); text-decoration: none;">Mi Dashboard</a>
+        </nav>
+        <div id="header-auth" style="margin-left: auto;">
+            <a href="index.html" class="btn btn-outline btn-sm">Iniciar sesión</a>
+        </div>
+    </header>
+
+    <!-- ── Breadcrumb ───────────────────────────────────────────────────────── -->
+    <div style="max-width: var(--container-xl); margin: 0 auto; padding: var(--space-4) var(--space-8);">
+        <p style="font-size: var(--text-xs); color: var(--color-text-muted);">
+            <a href="catalogo.html" style="color: var(--color-primary); text-decoration: none;">Catálogo</a>
+            <span style="margin: 0 var(--space-2);">›</span>
+            <span id="breadcrumb-title">Oferta</span>
+        </p>
+    </div>
+
+    <!-- ── Estado de error ─────────────────────────────────────────────────── -->
+    <div id="offer-not-found" style="display: none; max-width: var(--container-md); margin: var(--space-16) auto; padding: 0 var(--space-8); text-align: center;">
+        <div class="empty-state">
+            <div class="empty-state-icon">🔍</div>
+            <p>Oferta no encontrada. Verifica la URL o regresa al catálogo.</p>
+            <a href="catalogo.html" class="btn btn-outline" style="margin-top: var(--space-4);">Ver catálogo</a>
+        </div>
+    </div>
+
+    <!-- ── Contenido de la oferta ───────────────────────────────────────────── -->
+    <div id="offer-content" style="display: none; max-width: var(--container-xl); margin: 0 auto; padding: 0 var(--space-8) var(--space-16);">
+
+        <!-- Hero -->
+        <div class="offer-hero">
+            <div id="offer-type-badge" class="offer-type-badge"></div>
+            <h1 id="offer-title"></h1>
+            <p id="offer-short-desc" class="hero-lead"></p>
+            <div id="offer-meta-pills" class="meta-pills"></div>
+        </div>
+
+        <!-- Layout 2 columnas -->
+        <div class="offer-layout">
+
+            <!-- Columna izquierda -->
+            <div class="stack" style="--stack-gap: var(--space-6);">
+
+                <!-- Descripción -->
+                <section class="card">
+                    <div class="card-header"><h2 class="card-title">Descripción</h2></div>
+                    <div class="card-body">
+                        <p id="offer-long-desc" class="text-sm" style="line-height: var(--leading-relaxed);"></p>
+                    </div>
+                </section>
+
+                <!-- ¿Qué aprenderás? -->
+                <section class="card">
+                    <div class="card-header"><h2 class="card-title">¿Qué aprenderás?</h2></div>
+                    <div class="card-body">
+                        <ul id="offer-outcomes" style="list-style: none; padding: 0; display: grid; gap: var(--space-3); margin: 0;"></ul>
+                    </div>
+                </section>
+
+                <!-- Contenido del curso (solo cursos con módulos) -->
+                <section id="offer-modules-section" class="card" style="display: none;">
+                    <div class="card-header"><h2 class="card-title">Contenido del curso</h2></div>
+                    <div id="offer-modules-list" class="reading-structure"></div>
+                </section>
+
+                <!-- Acreditación -->
+                <section class="support-callout">
+                    <h3 class="weight-bold mb-2">Acreditación y cumplimiento regulatorio</h3>
+                    <p class="text-sm">Esta oferta cumple con los requisitos de educación continuada establecidos por la <strong>Ley Núm. 82 del 31 de mayo de 1972</strong>. El CNDPR opera como <strong>Proveedor de Educación Continuada Número 00062</strong> reconocido por la Junta Examinadora de Nutricionistas-Dietistas de Puerto Rico.</p>
+                    <p class="text-sm" style="margin-top: var(--space-3);">Código de actividad: <strong id="offer-code-text"></strong></p>
+                </section>
+
+            </div>
+
+            <!-- Columna derecha — sidebar info card -->
+            <div>
+                <div class="info-card">
+                    <p class="info-card-title">Detalles de la oferta</p>
+                    <div class="info-rows">
+
+                        <!-- Tipo -->
+                        <div class="info-row">
+                            <div class="info-row-icon" id="enroll-type-icon-box"></div>
+                            <div class="info-row-text">
+                                <strong id="enroll-type-label"></strong>
+                                <span>Educación Continua CNDPR</span>
+                            </div>
+                        </div>
+
+                        <!-- Horas EC -->
+                        <div class="info-row">
+                            <div class="info-row-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div class="info-row-text">
+                                <strong>Horas EC</strong>
+                                <span id="enroll-hours"></span>
+                            </div>
+                        </div>
+
+                        <!-- Módulos (solo cursos) -->
+                        <div class="info-row" id="enroll-modules-row" style="display: none;">
+                            <div class="info-row-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                            </div>
+                            <div class="info-row-text">
+                                <strong>Módulos</strong>
+                                <span id="enroll-modules-val"></span>
+                            </div>
+                        </div>
+
+                        <!-- Código -->
+                        <div class="info-row">
+                            <div class="info-row-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                            </div>
+                            <div class="info-row-text">
+                                <strong>Código</strong>
+                                <span id="enroll-code"></span>
+                            </div>
+                        </div>
+
+                        <!-- Modalidad (estático) -->
+                        <div class="info-row">
+                            <div class="info-row-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            </div>
+                            <div class="info-row-text">
+                                <strong>Modalidad</strong>
+                                <span>Virtual · Autoadministrado</span>
+                            </div>
+                        </div>
+
+                        <!-- Certificado (estático) -->
+                        <div class="info-row">
+                            <div class="info-row-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+                            </div>
+                            <div class="info-row-text">
+                                <strong>Certificado</strong>
+                                <span>Sí, CNDPR oficial</span>
+                            </div>
+                        </div>
+
+                        <!-- Costo (dinámico) -->
+                        <div class="info-row">
+                            <div class="info-row-icon" id="enroll-cost-icon-box">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <div class="info-row-text">
+                                <strong>Costo</strong>
+                                <span id="enroll-premium-badge"></span>
+                            </div>
+                        </div>
+
+                    </div><!-- /info-rows -->
+
+                    <div class="divider"></div>
+
+                    <div class="instruc-box" id="instruc-box-content">
+                        <strong>💡 Antes de inscribirte</strong>
+                        Revisa el contenido y los objetivos de la oferta. Asegúrate de que corresponde con tus necesidades de educación continuada.
+                    </div>
+
+                    <div id="enroll-cta" style="margin-top: 1rem;"></div>
+
+                    <!-- Instructor -->
+                    <div class="instructor-row" id="offer-instructor-container" style="display: none;">
+                        <div class="instructor-avatar" id="offer-instructor-avatar"></div>
+                        <div class="instructor-info">
+                            <strong id="offer-instructor-name"></strong>
+                            <span id="offer-instructor-bio" class="instructor-bio-short"></span>
+                        </div>
+                    </div>
+
+                </div><!-- /info-card -->
+            </div>
+
+        </div><!-- /offer-layout -->
+
+    </div><!-- /offer-content -->
+
+    <!-- NIVEL 4 — Pie discreto -->
+    <p style="text-align: center; color: var(--color-text-faint); font-size: var(--text-xs); padding: var(--space-8) var(--space-8) 0; border-top: 1px solid var(--color-divider); max-width: var(--container-xl); margin: 0 auto;">
+        Plataforma en fase de prototipo. Contenido demostrativo no oficial.
+    </p>
+
+    <!-- Footer institucional -->
+    <footer style="background: var(--color-primary); color: var(--color-text-inverse); padding: var(--space-8); margin-top: var(--space-8);">
+        <div style="max-width: var(--container-lg); margin: 0 auto; display: flex; flex-wrap: wrap; gap: var(--space-6); justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <img src="CNDPR-LOGO-transparent.png" alt="CNDPR" style="height: 2rem;">
+                <span style="font-size: var(--text-sm); color: rgba(255,255,255,0.7);">Colegio de Nutricionistas y Dietistas de Puerto Rico · Proveedor 00062</span>
+            </div>
+            <div style="display: flex; gap: var(--space-5);">
+                <a href="catalogo.html" style="font-size: var(--text-sm); color: rgba(255,255,255,0.7); text-decoration: none;">Catálogo</a>
+                <a href="dashboard.html" style="font-size: var(--text-sm); color: rgba(255,255,255,0.7); text-decoration: none;">Mi Dashboard</a>
+                <a href="index.html" style="font-size: var(--text-sm); color: rgba(255,255,255,0.7); text-decoration: none;">Iniciar sesión</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/catalog-data.js"></script>
+    <script>
+    const TYPE_CONFIG = {
+        curso:        { icon: '🎓', label: 'Curso' },
+        taller:       { icon: '🛠️', label: 'Mini-Taller' },
+        lectura:      { icon: '📖', label: 'Lectura dirigida' },
+        presentacion: { icon: '🎤', label: 'Presentación' },
+        podcast:      { icon: '🎧', label: 'Podcast' },
+    };
+
+    function getParam(key) {
+        return new URLSearchParams(window.location.search).get(key);
+    }
+
+    function enroll(id) {
+        const arr = JSON.parse(sessionStorage.getItem('lms_enrollments') || '["dm2-actualizacion-clinica"]');
+        if (!arr.includes(id)) {
+            arr.push(id);
+            sessionStorage.setItem('lms_enrollments', JSON.stringify(arr));
+        }
+        if (!sessionStorage.getItem('student_name')) {
+            sessionStorage.setItem('student_name', 'Dra. Ana M. Rodríguez Vega');
+        }
+        window.location.href = 'dashboard.html';
+    }
+
+    function renderCTA(offering) {
+        const cta        = document.getElementById('enroll-cta');
+        const isLogged   = !!sessionStorage.getItem('student_name');
+        const enrollments = JSON.parse(sessionStorage.getItem('lms_enrollments') || '["dm2-actualizacion-clinica"]');
+        const enrolled   = enrollments.includes(offering.id);
+
+        if (!isLogged) {
+            cta.innerHTML = `
+                <a href="index.html" class="cta-sidebar">Iniciar sesión para inscribirme</a>
+                <p style="font-size:var(--text-xs);color:var(--color-text-muted);text-align:center;margin-top:var(--space-2);">Necesitas una cuenta para acceder a esta oferta.</p>`;
+        } else if (enrolled) {
+            const OFFER_TARGETS = { 'dm2-actualizacion-clinica': 'modulo1_intro.html', 'conteo-carbohidratos': 'taller_conteo_intro.html' };
+            const target = OFFER_TARGETS[offering.id] || 'dashboard.html';
+            cta.innerHTML = `
+                <a href="${target}" class="cta-sidebar">▶ Continuar</a>
+                <p style="font-size:var(--text-xs);color:var(--teal-dark);text-align:center;margin-top:var(--space-2);font-weight:600;">✓ Ya estás matriculado en esta oferta</p>`;
+        } else {
+            cta.innerHTML = `
+                <button type="button" class="cta-sidebar" onclick="enroll('${offering.id}')">Inscribirme ahora</button>
+                <p style="font-size:var(--text-xs);color:var(--color-text-muted);text-align:center;margin-top:var(--space-2);">La inscripción se activará en tu dashboard.</p>`;
+        }
+    }
+
+    function renderPage() {
+        const id       = getParam('id');
+        const offering = id ? getOfferingById(id) : null;
+
+        if (!offering) {
+            document.getElementById('offer-not-found').style.display = 'block';
+            return;
+        }
+
+        document.title = `${offering.title} | LMS CNDPR`;
+        document.getElementById('offer-content').style.display = 'block';
+
+        const tc = TYPE_CONFIG[offering.type] || TYPE_CONFIG.curso;
+        const hoursDisplay = offering.hours % 1 === 0 ? offering.hours.toFixed(0) : offering.hours.toFixed(2);
+
+        // Breadcrumb
+        document.getElementById('breadcrumb-title').textContent = offering.title;
+
+        // Hero
+        document.getElementById('offer-type-badge').innerHTML =
+            `<span style="font-size:0.9rem;">${tc.icon}</span> ${tc.label} · ${offering.code}`;
+        document.getElementById('offer-title').textContent = offering.title;
+        document.getElementById('offer-short-desc').textContent = offering.shortDescription;
+        document.getElementById('offer-meta-pills').innerHTML = `
+            <span class="meta-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                ${hoursDisplay}h EC
+            </span>
+            <span class="meta-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+                Certificado CNDPR
+            </span>
+            <span class="meta-pill">${offering.premium ? 'Premium' : 'Gratuito'}</span>
+        `;
+
+        // Columna izquierda
+        document.getElementById('offer-long-desc').textContent = offering.longDescription;
+        document.getElementById('offer-code-text').textContent = offering.code;
+
+        document.getElementById('offer-outcomes').innerHTML = offering.learningOutcomes.map(item =>
+            `<li style="display:flex;align-items:flex-start;gap:var(--space-3);font-size:var(--text-sm);">
+                <span style="color:var(--color-success);font-weight:var(--weight-bold);flex-shrink:0;margin-top:0.1em;">✓</span>
+                <span style="line-height:var(--leading-relaxed);">${item}</span>
+            </li>`
+        ).join('');
+
+        // Módulos → structure-item
+        if (offering.type === 'curso' && offering.modules) {
+            document.getElementById('offer-modules-section').style.display = 'block';
+            document.getElementById('offer-modules-list').innerHTML = offering.modules.map((m, i) =>
+                `<div class="structure-item">
+                    <div class="structure-num">${i + 1}</div>
+                    <div class="structure-info">
+                        <strong>${m.title}</strong>
+                        <span>${m.description || m.descripcion || ''}</span>
+                    </div>
+                    <span class="structure-time">${m.hours.toFixed(2)}h</span>
+                </div>`
+            ).join('');
+        }
+
+        // Sidebar — info rows
+        document.getElementById('enroll-type-icon-box').innerHTML =
+            `<span style="font-size:18px;line-height:1;">${tc.icon}</span>`;
+        document.getElementById('enroll-type-label').textContent = tc.label;
+        document.getElementById('enroll-hours').textContent = `${hoursDisplay} horas EC`;
+        document.getElementById('enroll-code').textContent = offering.code;
+
+        if (offering.modules) {
+            document.getElementById('enroll-modules-row').style.display = 'flex';
+            document.getElementById('enroll-modules-val').textContent = `${offering.modules.length} módulos`;
+        }
+
+        // Costo row — color según tipo
+        if (offering.premium) {
+            document.getElementById('enroll-cost-icon-box').style.background = 'var(--amber-light)';
+            document.getElementById('enroll-cost-icon-box').querySelector('svg').style.color = 'var(--amber-dark)';
+            document.getElementById('enroll-premium-badge').innerHTML =
+                '<span style="color:var(--amber-dark);font-weight:600;">Premium</span>';
+        } else {
+            document.getElementById('enroll-cost-icon-box').style.background = 'var(--teal-light)';
+            document.getElementById('enroll-cost-icon-box').querySelector('svg').style.color = 'var(--teal-dark)';
+            document.getElementById('enroll-premium-badge').innerHTML =
+                '<span style="color:var(--teal-dark);font-weight:600;">Gratuito</span>';
+        }
+
+        // Instruc-box — dinámico por tipo
+        const instrucMessages = {
+            curso:   '<strong>💡 Antes de comenzar</strong>Revisa los objetivos de aprendizaje de cada módulo antes de iniciar el contenido.',
+            taller:  '<strong>💡 Cómo aprovechar este taller</strong>Ten a mano una calculadora durante las prácticas interactivas.',
+            lectura: '<strong>💡 Cómo aprovechar esta lectura</strong>Antes de comenzar, revisa las preguntas guía de cada sección.',
+        };
+        document.getElementById('instruc-box-content').innerHTML =
+            instrucMessages[offering.type] || '<strong>💡 Antes de inscribirte</strong>Revisa el contenido y los objetivos de la oferta.';
+
+        // Instructor → sidebar
+        const initials = offering.instructor.replace(/^(Lcda?\.|Dra?\.|Dr\.) /, '').split(' ').slice(0, 2).map(w => w[0]).join('');
+        document.getElementById('offer-instructor-avatar').textContent = initials;
+        document.getElementById('offer-instructor-name').textContent   = offering.instructor;
+        document.getElementById('offer-instructor-bio').textContent    = offering.instructorBio;
+        document.getElementById('offer-instructor-container').style.display = 'flex';
+
+        renderCTA(offering);
+    }
+
+    function initHeaderAuth() {
+        const name = sessionStorage.getItem('student_name');
+        if (!name) return;
+        document.getElementById('header-auth').innerHTML =
+            `<a href="dashboard.html" class="btn btn-outline btn-sm">Mi Dashboard</a>`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        initHeaderAuth();
+        renderPage();
+    });
+    </script>
+</body>
+</html>
