@@ -8,7 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
+    <style>
+        :root {
+            --font-ui:      "DM Sans", system-ui, sans-serif;
+            --font-reading: "Lora", Georgia, serif;
+        }
+        body { font-family: var(--font-ui); }
+        h1, h2, h3, .card-title { font-family: var(--font-reading); }
+        .reading-content, .prose { font-family: var(--font-reading); font-size: 17px; line-height: 1.7; }
+        .reading-content h1, .reading-content h2, .reading-content h3, .prose h1, .prose h2, .prose h3 { font-family: var(--font-reading); }
+        .lesson-header h1, .page-title { font-family: var(--font-reading); line-height: 1.25; }
+    </style>
     <style>
         /* ── Tokens de color ── */
         :root {
@@ -470,7 +482,7 @@
             </div>
             <div>
                 <p style="font-size: var(--text-xs); font-weight: var(--weight-bold); text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); margin-bottom: var(--space-3);">Contacto</p>
-                <p style="font-size: var(--text-sm); color: rgba(255,255,255,0.7); line-height: var(--leading-relaxed);">P.O. BOX 362471<br>San Juan, Puerto Rico 00936-2471</p>
+                <p style="font-size: var(--text-sm); color: rgba(255,255,255,0.7); line-height: var(--leading-relaxed);"></p>
             </div>
         </div>
         <div style="max-width: var(--container-lg); margin: var(--space-8) auto 0; padding-top: var(--space-6); border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">

@@ -6,7 +6,19 @@
     <title>La Nutrición y el Corazón — Podcast | LMS Academia ND PR</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
+    <style>
+        :root {
+            --font-ui:      "DM Sans", system-ui, sans-serif;
+            --font-reading: "Lora", Georgia, serif;
+        }
+        body { font-family: var(--font-ui); }
+        h1, h2, h3, .card-title { font-family: var(--font-reading); }
+        .reading-content, .prose { font-family: var(--font-reading); font-size: 17px; line-height: 1.7; }
+        .reading-content h1, .reading-content h2, .reading-content h3, .prose h1, .prose h2, .prose h3 { font-family: var(--font-reading); }
+        .lesson-header h1, .page-title { font-family: var(--font-reading); line-height: 1.25; }
+    </style>
     <script type="module" src="scripts/auth-guard.js"></script>
     <style>
         /* ── TOKENS LOCALES ── */
