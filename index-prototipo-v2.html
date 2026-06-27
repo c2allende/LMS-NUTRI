@@ -646,41 +646,264 @@
         </div>
     </section>
 
-    <!-- ── Testimonios ───────────────────────────────────────────────── -->
-    <section id="testimonios" style="background:var(--color-bg-subtle);padding:var(--space-16) var(--space-6);">
-        <div style="max-width:var(--container-lg);margin-inline:auto;">
-            <div style="text-align:center;margin-bottom:var(--space-8);">
-                <h2 style="font-size:var(--text-2xl);font-weight:var(--weight-bold);margin:0 0 var(--space-3);">Lo que dicen nuestros participantes</h2>
-                <p style="font-size:var(--text-md);color:var(--color-text-muted);">Profesionales que ya están actualizando su práctica.</p>
-            </div>
-            <div class="testimonial-grid">
-                <div class="card">
-                    <div class="card-body">
-                        <p style="font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--color-text);margin:0 0 var(--space-5);font-style:italic;">"El curso de DM2 transformó cómo aplico el proceso ADIME en mi consulta. La calidad del material y la profundidad clínica son excepcionales."</p>
-                        <div style="display:flex;align-items:center;gap:var(--space-3);">
-                            <div style="width:3rem;height:3rem;border-radius:var(--radius-pill);background:var(--color-primary-soft);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;">👤</div>
-                            <div>
-                                <div style="font-size:var(--text-sm);font-weight:var(--weight-bold);color:var(--color-text);">Lcda. Carmen N. Flores, RDN, LD</div>
-                                <div style="font-size:var(--text-xs);color:var(--color-text-muted);">Nutricionista clínica · San Juan, PR</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <p style="font-size:var(--text-md);line-height:var(--leading-relaxed);color:var(--color-text);margin:0 0 var(--space-5);font-style:italic;">"Por fin una plataforma en español para nuestra realidad puertorriqueña. Los talleres de conteo de carbohidratos son un recurso que recomiendo a todos mis colegas."</p>
-                        <div style="display:flex;align-items:center;gap:var(--space-3);">
-                            <div style="width:3rem;height:3rem;border-radius:var(--radius-pill);background:var(--color-primary-soft);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;">👤</div>
-                            <div>
-                                <div style="font-size:var(--text-sm);font-weight:var(--weight-bold);color:var(--color-text);">Dr. Pablo R. Medina Soto, PhD, RD</div>
-                                <div style="font-size:var(--text-xs);color:var(--color-text-muted);">Investigador y docente · Mayagüez, PR</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- ── Testimonios (Reel Horizontal) ─────────────────────────────── -->
+    <style>
+        .testimonials {
+          padding: 4rem 1.5rem;
+          background-color: var(--amber-light, #FAF9F6);
+          text-align: center;
+        }
+        .testimonials-header h2 {
+          font-family: 'Lora', serif;
+          font-size: clamp(2rem, 4vw, 2.75rem);
+          color: var(--text-main, #1a1a1a);
+          margin-bottom: 0.5rem;
+          font-weight: 800;
+        }
+        .testimonials-subtitle {
+          color: var(--text-muted, #4b5563);
+          font-size: 1.125rem;
+          margin-bottom: 3rem;
+        }
+        .testimonials-reel {
+          position: relative;
+          max-width: 1100px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+        .reel-nav {
+          flex-shrink: 0;
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: white;
+          border: 1px solid var(--border, rgba(0,0,0,0.08));
+          color: var(--text-main, #1a1a1a);
+          display: none; 
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+          z-index: 2;
+        }
+        .reel-nav:hover:not(:disabled) {
+          background: var(--teal-light, #E1F5EE);
+          color: var(--teal-dark, #085041);
+          border-color: var(--teal, #1D9E75);
+        }
+        .reel-nav:disabled {
+          opacity: 0.4;
+          cursor: not-allowed;
+          box-shadow: none;
+        }
+        .reel-track {
+          display: flex;
+          gap: 1.5rem;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          scroll-behavior: smooth;
+          scrollbar-width: none;
+          padding: 1rem 0;
+          outline: none;
+        }
+        .reel-track::-webkit-scrollbar {
+          display: none;
+        }
+        .reel-track:focus-visible {
+          box-shadow: 0 0 0 3px var(--teal, #1D9E75);
+          border-radius: 1rem;
+        }
+        .testimonial-card {
+          flex: 0 0 calc(100% - 1rem); 
+          scroll-snap-align: center;
+          background: white;
+          border: 1px solid var(--border, rgba(0,0,0,0.08));
+          border-radius: 1.25rem;
+          padding: 2rem;
+          text-align: left;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .testimonial-card blockquote {
+          font-size: 1.125rem;
+          font-style: italic;
+          color: var(--text-main, #1a1a1a);
+          line-height: 1.7;
+          margin: 0 0 2rem 0;
+        }
+        .testimonial-card figcaption {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+        .testimonial-avatar {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: var(--teal-light, #E1F5EE);
+          color: var(--teal-dark, #085041);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          flex-shrink: 0;
+        }
+        .testimonial-name {
+          font-weight: 700;
+          color: var(--text-main, #1a1a1a);
+          margin: 0 0 0.25rem 0;
+          font-size: 0.95rem;
+        }
+        .testimonial-role {
+          color: var(--text-muted, #4b5563);
+          font-size: 0.85rem;
+          margin: 0;
+        }
+        @media (min-width: 768px) {
+          .reel-nav { display: flex; }
+          .testimonial-card {
+            flex: 0 0 calc(50% - 0.75rem); 
+            scroll-snap-align: start;
+          }
+        }
+    </style>
+
+    <section class="testimonials" aria-labelledby="testimonials-title" role="region" aria-roledescription="carousel" aria-label="Testimonios de participantes">
+      <div class="testimonials-header">
+        <h2 id="testimonials-title">Lo que dicen nuestros participantes</h2>
+        <p class="testimonials-subtitle">Profesionales que ya están actualizando su práctica.</p>
+      </div>
+    
+      <div class="testimonials-reel">
+        <button class="reel-nav reel-nav--prev" type="button" aria-label="Ver testimonio anterior" aria-controls="testimonial-track" disabled>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+    
+        <div class="reel-track" id="testimonial-track" tabindex="0">
+          <figure class="testimonial-card">
+            <blockquote>"El curso de DM2 transformó cómo aplico el proceso ADIME en mi consulta. La calidad del material y la profundidad clínica son excepcionales."</blockquote>
+            <figcaption>
+              <div class="testimonial-avatar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="testimonial-meta">
+                <p class="testimonial-name">Lcda. Carmen N. Flores, RDN, LD</p>
+                <p class="testimonial-role">Nutricionista clínica · San Juan, PR</p>
+              </div>
+            </figcaption>
+          </figure>
+    
+          <figure class="testimonial-card">
+            <blockquote>"Por fin una plataforma en español para nuestra realidad puertorriqueña. Los talleres de conteo de carbohidratos son un recurso que recomiendo a todos mis colegas."</blockquote>
+            <figcaption>
+              <div class="testimonial-avatar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="testimonial-meta">
+                <p class="testimonial-name">Dr. Pablo R. Medina Soto, PhD, RD</p>
+                <p class="testimonial-role">Investigador y docente · Mayagüez, PR</p>
+              </div>
+            </figcaption>
+          </figure>
+    
+          <figure class="testimonial-card">
+            <blockquote>"La lectura dirigida sobre la Microbiota Intestinal fue un excelente repaso. Me encantó la plataforma, es muy fácil de usar y el certificado llega al instante."</blockquote>
+            <figcaption>
+              <div class="testimonial-avatar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="testimonial-meta">
+                <p class="testimonial-name">Lcda. Valeria T. Ríos, RDN</p>
+                <p class="testimonial-role">Dietista bariátrica · Ponce, PR</p>
+              </div>
+            </figcaption>
+          </figure>
         </div>
+    
+        <button class="reel-nav reel-nav--next" type="button" aria-label="Ver siguiente testimonio" aria-controls="testimonial-track">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
     </section>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const track = document.getElementById('testimonial-track');
+          const btnPrev = document.querySelector('.reel-nav--prev');
+          const btnNext = document.querySelector('.reel-nav--next');
+          
+          if (!track || !btnPrev || !btnNext) return;
+      
+          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      
+          const updateButtons = () => {
+              const scrollLeft = track.scrollLeft;
+              const maxScroll = track.scrollWidth - track.clientWidth;
+              btnPrev.disabled = scrollLeft <= 1;
+              btnNext.disabled = scrollLeft >= maxScroll - 1;
+          };
+      
+          const getScrollAmount = () => {
+              const firstCard = track.querySelector('.testimonial-card');
+              if (!firstCard) return 300;
+              const style = window.getComputedStyle(track);
+              const gap = parseFloat(style.gap || 0);
+              return firstCard.offsetWidth + gap;
+          };
+      
+          btnNext.addEventListener('click', () => {
+              track.scrollBy({ left: getScrollAmount(), behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+          });
+      
+          btnPrev.addEventListener('click', () => {
+              track.scrollBy({ left: -getScrollAmount(), behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+          });
+      
+          track.addEventListener('scroll', () => {
+              window.requestAnimationFrame(updateButtons);
+          }, { passive: true });
+      
+          track.addEventListener('keydown', (e) => {
+              if (e.key === 'ArrowRight') {
+                  e.preventDefault();
+                  btnNext.click();
+              } else if (e.key === 'ArrowLeft') {
+                  e.preventDefault();
+                  btnPrev.click();
+              }
+          });
+      
+          updateButtons();
+      
+          if (!prefersReducedMotion) {
+              let autoplayInterval;
+              const startAutoplay = () => {
+                  autoplayInterval = setInterval(() => {
+                      const maxScroll = track.scrollWidth - track.clientWidth;
+                      if (track.scrollLeft >= maxScroll - 1) {
+                          track.scrollTo({ left: 0, behavior: 'smooth' });
+                      } else {
+                          btnNext.click();
+                      }
+                  }, 7000); 
+              };
+              const stopAutoplay = () => clearInterval(autoplayInterval);
+      
+              startAutoplay();
+              track.addEventListener('mouseenter', stopAutoplay);
+              track.addEventListener('mouseleave', startAutoplay);
+              track.addEventListener('focusin', stopAutoplay);
+              track.addEventListener('focusout', startAutoplay);
+              track.addEventListener('touchstart', stopAutoplay, { passive: true });
+          }
+      });
+    </script>
 
     <!-- ── Banner comunidad ──────────────────────────────────────────── -->
     <section class="community-section">
